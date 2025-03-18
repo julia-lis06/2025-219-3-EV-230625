@@ -1,0 +1,54 @@
+{
+    "top_movies": {
+        "titles": [
+            "ABC Stage 67: A Christmas Memory",
+            "A Kylie Christmas: Live from the Royal Albert Hall",
+            "Jingle Vingle",
+            "The Original Christmas Classics",
+            "Holiday Hideaway",
+            "Spot's Magical Christmas",
+            "Community Theater Christmas",
+            "Christmas at the Greenbrier",
+            "Christmas Eve",
+            "Holiday Road"
+        ],
+        "ratings": [
+            9.0,
+            8.6,
+            8.5,
+            8.4,
+            8.3,
+            7.6,
+            7.5,
+            7.4,
+            7.3,
+            7.2
+        ]
+    },
+    "top_votes": {
+        "titles": [
+            "The Santa Summit",
+            "Holiday Road",
+            "Christmas Staycation",
+            "Mistletoe & Menorahs",
+            "Undercover Christmas",
+            "A Song for Christmas",
+            "A Twist of Christmas",
+            "Stealing Christmas",
+            "The Christmas Chalet",
+            "Long Lost Christmas"
+        ],
+        "votes": [
+            997,
+            992,
+            992,
+            992,
+            992,
+            981,
+            980,
+            979,
+            977,
+            972
+        ]
+    }
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Christmas Movies - Interactive Charts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>🎄 Christmas Movies Wonderland 🎅</header>
+
+    <main>
+        <h2>Welcome to Your Ultimate Christmas Movie Guide!</h2>
+        <p>Explore festive classics and hidden gems — all in one place!</p>
+        <h3>Top Fan Favorites:</h3>
+        <ul>
+            <li><strong>Home Alone (1990)</strong> - A clever boy defends his home from burglars.</li>
+            <li><strong>The Grinch (2000)</strong> - A grumpy creature tries to steal Christmas.</li>
+            <li><strong>The Polar Express (2004)</strong> - A magical train ride to the North Pole.</li>
+        </ul>
+    </main>
+    
+    <section class="filter-section">
+        <h2>Filter Movies by Rating</h2>
+        <select id="ratingFilter">
+            <option value="">Show All Ratings</option>
+        </select>
+        <button onclick="resetFilters()">Reset Filters</button>
+    </section>
+
+    <div class="chart-pair">
+        <div class="chart-box">
+            <h2>IMDB Ratings</h2>
+            <canvas id="imdbChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h2>Number of Votes</h2>
+            <canvas id="votesChart"></canvas>
+        </div>
+    </div>
+
+    <h2>Distribution of Ratings (Click to See Movies)</h2>
+    <canvas id="ratingPieChart"></canvas>
+
+    <h3>Movies in Selected Rating Category:</h3>
+    <select id="movieDropdown">
+        <option>Select a movie</option>
+    </select>
+
+    <section id="surveySection">
+        <h2>According to My Personal Survey</h2>
+        <div id="surveyResults"></div>
+
+        <h2>🎉 Fun Fact from the Survey!</h2>
+        <div id="funFact"></div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for Christmas Movie Lovers — Based on IMDb Data!</p>
+    </footer>
+
+    <!--Non interactive charts, top 10 -->
+    <h2>Top 10 Christmas Movies by IMDb Rating</h2>
+    <img src="top_10_ratings_chart.png" alt="Top 10 Christmas Movies by Rating">
+
+    <h2>Top 10 Christmas Movies by Votes</h2>
+    <img src="top_10_votes_chart.png" alt="Top 10 Christmas Movies by Votes">
+
+    <!-- info from survey -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+                const firebaseConfig = {
+        apiKey: "AIzaSyDIAahVRCID2MTjZeXKwuRKTxNVHw9IA_g",
+        authDomain: "lc-230625.firebaseapp.com",
+        databaseURL: "https://lc-230625-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "lc-230625",
+        storageBucket: "lc-230625.firebasestorage.app",
+        messagingSenderId: "650040616475",
+        appId: "1:650040616475:web:0a23977e7e4365d5947abe",
+        measurementId: "G-QF6V9MBEVB"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        async function fetchSurveyData() {
+            const surveyRef = ref(db, 'christmasMovieSurvey');
+            const snapshot = await get(surveyRef);
+
+            const surveyResults = document.getElementById('surveyResults');
+            const funFact = document.getElementById('funFact');
+
+            if (snapshot.exists()) {
+                const surveyResponses = Object.values(snapshot.val());
+                const snackCounts = {};
+                const movieCounts = {};
+                let outsideSeasonYes = 0;
+
+                surveyResponses.forEach(response => {
+                    snackCounts[response.favoriteSnack] = (snackCounts[response.favoriteSnack] || 0) + 1;
+                    movieCounts[response.moviesPerYear] = (movieCounts[response.moviesPerYear] || 0) + 1;
+
+                    if (response.watchOutsideSeason === "Yes") {
+                        outsideSeasonYes++;
+                    }
+                });
+
+                const totalResponses = surveyResponses.length;
+                const outsideSeasonPercentage = ((outsideSeasonYes / totalResponses) * 100).toFixed(1);
+
+                const mostCommonMoviesPerYear = Object.keys(movieCounts).reduce((a, b) => movieCounts[a] > movieCounts[b] ? a : b);
+                const mostPopularSnack = Object.keys(snackCounts).reduce((a, b) => snackCounts[a] > snackCounts[b] ? a : b);
+
+                surveyResults.innerHTML = `
+                    <p><strong>Most Common Number of Movies Watched Per Year:</strong> ${mostCommonMoviesPerYear}</p>
+                    <p><strong>Watch Christmas Movies Outside the Season:</strong> ${outsideSeasonPercentage}% said Yes</p>
+                `;
+
+                funFact.innerHTML = `<p><strong>Fun Fact:</strong> The most popular Christmas movie snack is <strong>${mostPopularSnack}</strong>!</p>`;
+            } else {
+                surveyResults.innerHTML = "<p>No survey responses found.</p>";
+                funFact.innerHTML = "<p>No fun facts yet!</p>";
+            }
+        }
+
+        fetchSurveyData();
+    </script>
+
+    <script>
+        let imdbChart, votesChart, fullData;
+
+        async function fetchMovieData() {
+            const response = await fetch('all_movies_data.json');
+            fullData = await response.json();
+
+            imdbChart = new Chart(document.getElementById('imdbChart'), {
+                type: 'bar',
+                data: {
+                    labels: fullData.all_movies.titles,
+                    datasets: [{
+                        label: 'IMDB Rating',
+                        data: fullData.all_movies.ratings,
+                        backgroundColor: 'lightblue'
+                    }]
+                }
+            });
+
+            votesChart = new Chart(document.getElementById('votesChart'), {
+                type: 'bar',
+                data: {
+                    labels: fullData.all_movies.titles,
+                    datasets: [{
+                        label: 'Number of Votes',
+                        data: fullData.all_movies.votes,
+                        backgroundColor: 'lightgreen'
+                    }]
+                }
+            });
+
+            new Chart(document.getElementById('ratingPieChart'), {
+                type: 'pie',
+                data: {
+                    labels: fullData.rating_distribution.ratings,
+                    datasets: [{
+                        data: fullData.rating_distribution.counts,
+                        backgroundColor: ['red', 'green', 'blue', 'orange', 'purple']
+                    }]
+                },
+                options: {
+                    onClick: (e, item) => {
+                        if (item.length > 0) {
+                            const index = item[0].index;
+                            populateMovieDropdown(fullData.rating_distribution.ratings[index]);
+                        }
+                    }
+                }
+            });
+
+            populateFilterOptions(fullData.rating_distribution.ratings);
+            resetFilters();  // Show all data by default
+        }
+
+        function populateFilterOptions(ratings) {
+            const filter = document.getElementById('ratingFilter');
+            ratings.forEach(rating => {
+                const option = document.createElement('option');
+                option.value = rating;
+                option.innerText = rating;
+                filter.appendChild(option);
+            });
+
+            filter.addEventListener('change', () => {
+                filterMoviesByRating(filter.value);
+            });
+        }
+
+        function populateMovieDropdown(rating) {
+            const movieDropdown = document.getElementById('movieDropdown');
+            movieDropdown.innerHTML = '';
+
+            const movies = fullData.all_movies.titles.map((title, index) => {
+                if (fullData.all_movies.ratings_raw[index] === rating) return title;
+            }).filter(Boolean);
+
+            if (movies.length === 0) {
+                movieDropdown.innerHTML = '<option>No movies found for this rating</option>';
+            } else {
+                movieDropdown.innerHTML = '<option>Select a movie</option>';
+                movies.forEach(movie => {
+                    const option = document.createElement('option');
+                    option.value = movie;
+                    option.innerText = movie;
+                    movieDropdown.appendChild(option);
+                });
+            }
+        }
+
+        function filterMoviesByRating(rating) {
+            if (rating === "") {
+                resetFilters();
+                return;
+            }
+
+            const filtered = fullData.all_movies.titles.map((title, index) => {
+                if (fullData.all_movies.ratings_raw[index] === rating) {
+                    return { title, rating: fullData.all_movies.ratings[index], votes: fullData.all_movies.votes[index] };
+                }
+            }).filter(Boolean);
+
+            updateCharts(filtered);
+        }
+
+        function updateCharts(filteredMovies) {
+            imdbChart.data.labels = filteredMovies.map(m => m.title);
+            imdbChart.data.datasets[0].data = filteredMovies.map(m => m.rating);
+            votesChart.data.labels = filteredMovies.map(m => m.title);
+            votesChart.data.datasets[0].data = filteredMovies.map(m => m.votes);
+
+            imdbChart.update();
+            votesChart.update();
+        }
+
+        function resetFilters() {
+            filterMoviesByRating('');
+        }
+
+        fetchMovieData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+/* Page Background */
+body {
+    font-family: 'Arial', sans-serif;
+    background: repeating-linear-gradient(
+        45deg,
+        #aab5a5,
+        #aab5a5 20px,
+        #c0d3be 20px,
+        #c0d3be 40px
+    );
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header - Dark Red Festive Title */
+header {
+    background-color: #8b0000; 
+    color: white; 
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+/* Intro Text */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 5px solid #8b0000;
+    border-radius: 8px;
+}
+
+/* List of Fan Favorites */
+main ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+main ul li {
+    font-size: 18px;
+    background-color: #ffffff;
+    margin: 5px 0;
+    color: #8b0000;
+}
+
+/* Filter Section */
+.filter-section {
+    margin: 20px auto;
+}
+
+select, button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 2px solid #8b0000;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    color: #8b0000;
+    font-size: 14px;
+}
+
+button {
+    background-color: #8b0000;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #5a0000;
+}
+
+/* Charts */
+canvas {
+    background-color: white;
+    border: 2px solid #8b0000;
+    border-radius: 8px;
+    margin: 20px auto;
+    display: block;
+    max-width: 90%;
+    width: 500px;
+}
+
+/* Filtered Results */
+#filteredResults {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: left;
+    display: inline-block;
+    max-width: 600px;
+    background-color: white;
+    border: 2px solid #8b0000;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    background-color: #8b0000;
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+/* Side-by-side Charts */
+.chart-pair {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.chart-box {
+    width: calc(50% - 20px);
+    min-width: 300px;
+    background-color: white;
+    border: 2px solid #8b0000;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.chart-box canvas {
+    width: 100%;
+    height: 300px;
+}
+
+/* Survey Results and Fun Fact Section */
+#surveyResults, #funFact {
+    padding: 15px;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    margin: 15px auto;
+    max-width: 600px;
+}
+
+/* Survey Section Overall */
+#surveySection {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 3px solid #8b0000;
+    text-align: center;
+}
