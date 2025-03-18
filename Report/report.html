@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Movies</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .navbar { background: #0077b6; padding: 10px; text-align: center; }
+        .navbar button { margin: 5px; padding: 10px; border: none; background: #fff; cursor: pointer; }
+        .navbar button:hover { background: #ddd; }
+        section { padding: 20px; display: none; }
+        h1, h2 { color: #0077b6; }
+    </style>
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</head>
+<!--all page section names  -->
+<body>
+    <div class="navbar">
+        <button onclick="showSection('meeting-the-brief')">Meeting the Brief</button>
+        <button onclick="showSection('investigation')">Investigation</button>
+        <button onclick="showSection('plan-design')">Plan & Design</button>
+        <button onclick="showSection('create')">Create</button>
+        <button onclick="showSection('evaluation')">Evaluation</button>
+        <button onclick="showSection('references')">References</button>
+        <button onclick="showSection('summary-word-count')">Summary Word Count</button>
+    </div>
+
+    <section id="meeting-the-brief">
+        <h1>1. Meeting the Brief</h1>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <p>
+            <video width="640" height="360" controls>
+            <source src="myvideo.mp4" type="video/mp4">
+        </p>
+        
+    </section>
+
+    <section id="investigation">
+        <h1>2. Investigation</h1>
+<p>
+    After thorough research of websites containing given datasets, I found “ https://www.kaggle.com/datasets “ gave the most intricate topics for me to analyse in my information system. I researched multiple topics and eventually found one that interested me most, all things movies. I narrowed it down to “Christmas Movies”, https://www.kaggle.com/datasets/jonbown/christmas-movies , a dataset based on IMDb ratings. I found that the official IMDb website didn't offer a specific category for Christmas Movie lovers, and it was very hard to narrow movies down. Before starting my project, I carried out research into existing interactive information systems and explored data related to Christmas movies to help me understand how to present my data effectively. This research gave me ideas on how to display data through charts and filters, and how to make my project more interactive for users.
+</p>
+<img src="ideas.jpeg" alt="Ideas" style="max-width:100%; height:auto;">
+<h2>Research into Existing Interactive Information Systems</h2>
+<p>
+    To get ideas for my project, I researched several websites that display information about movies, including Christmas movies, using charts, ratings, and user interaction. These websites were easy to find through Google searches and helped me understand how movie data is typically presented.
+</p>
+
+<ul>
+    <li><strong>IMDb (Internet Movie Database)</strong> - IMDb is one of the most popular websites for movie information, I found this most interesting as my database that I ended up choosing is from their ratings and data. (<a href="https://www.imdb.com/" target="_blank">Link</a>)</li>
+
+    <li><strong>Rotten Tomatoes</strong> - Rotten Tomatoes displays critic and audience scores for movies, including lists like "Best Christmas Movies." It combines ratings with reviews and interactive filtering options, which inspired my idea to allow users to filter movies by rating. (<a href="https://www.rottentomatoes.com/" target="_blank">Link</a>)</li>
+
+    <li><strong>Pinterest</strong> - Pinterest is a visual discovery platform where users create and browse collections (called boards) on all kinds of topics, including Christmas movies. By searching "Best Christmas Movies," I found lots of user-generated lists and recommendations. (<a href="https://www.pinterest.com/" target="_blank">Link</a>)</li>
+</ul>
+
+
+<h2>Research into Christmas Movie Data</h2>
+<p>
+    I chose Christmas movies as the focus of my project because they are popular every year and people love discovering new festive films. To find my data, I used a publicly available dataset from <strong>Kaggle</strong>. This dataset included:
+</p>
+<ul>
+    <li>Movie titles</li>
+    <li>Release years</li>
+    <li>IMDB ratings</li>
+    <li>Number of user votes</li>
+</ul>
+<p>
+    This variety of data gave me the chance to create bar charts, pie charts, and other visualisations showing ratings or which movies were most popular.
+</p>
+
+<h2>Comparing My Project to Existing Systems</h2>
+<p>
+    My project is similar to IMDB because it uses charts and filters to display movie data. However, my project focuses specifically on Christmas movies, making it more tailored to the festive season. 
+    In addition, my project adds a personal element by allowing users to submit their own opinions through a survey. This survey data is then used to generate fun facts and insights, which is something I didn't see in the other systems I researched. 
+    Combining official data with user feedback makes my project more interactive and personal for users.
+</p>
+
+    </section>
+
+    <section id="plan-design">
+            <h1>3. Plan & Design</h1>
+        
+            <h2>Overview</h2>
+            <p>
+                This section outlines how I planned and designed my interactive information system. The goal was to create a
+                website that allows users to explore a dataset of Christmas movies through visualisations, filters, and interactive features.
+                The design was guided by the requirements set out in the project brief, ensuring both basic and advanced requirements were addressed.
+            </p>
+            <img src="design.jpg" alt="Ideas" style="max-width:100%; height:auto;">
+            <h2>Technologies Used</h2>
+            <p>
+                The following technologies were selected to develop my project:
+            </p>
+            <ul>
+                <li><strong>Python:</strong> Used to extract, clean, and process the dataset. Python was also used to generate initial visualisations and summary statistics.</li>
+                <li><strong>HTML & CSS:</strong> Used to create the website structure and style the user interface, ensuring it is visually appealing and easy to navigate.</li>
+                <li><strong>JavaScript:</strong> Used to add interactivity, such as filtering movies, updating charts, and processing user survey responses.</li>
+                <li><strong>Chart.js:</strong> Used to generate dynamic, interactive charts, including bar charts and pie charts that update based on user input.</li>
+                <li><strong>Firebase:</strong> Used to collect and store user survey responses in real-time, allowing me to generate insights from user feedback.</li>
+            </ul>
+        
+            <h2>Design Goals</h2>
+            <ul>
+                <li>Ensure the interface is easy to use with clear navigation and layout.</li>
+                <li>Allow users to view data through interactive charts and filters.</li>
+                <li>Enable users to contribute their opinions through a survey, with responses saved for analysis.</li>
+                <li>Ensure the website is fully responsive, working on both desktop and mobile devices.</li>
+            </ul>
+        
+            <h2>Flowchart Diagram</h2>
+            <p>
+                The flowchart below illustrates how users will interact with the system:
+            </p>
+            
+        
+            <h2>Page Structure</h2>
+            <p>The website will be divided into the following key sections:</p>
+            <ul>
+                <li><strong>Home Page:</strong> Introduction to the project and navigation to different sections.</li>
+                <li><strong>Interactive Charts:</strong> Bar and pie charts showing movie ratings, votes, and other key insights.</li>
+                <li><strong>Survey:</strong> A user feedback form asking about favourite Christmas movies and snacks.</li>
+                <li><strong>Charts On Top 10:</strong> Images of movies filtered by  top 10 rating.</li>
+                <li><strong>Evaluation:</strong> Reflection on the project’s success and areas for improvement.</li>
+            </ul>
+        
+            <h2>Considerations</h2>
+            <ul>
+                <li>Ensuring data is cleaned thoroughly to avoid errors in charts.</li>
+                <li>Providing clear instructions for users so they understand how to interact with the website.</li>
+                <li>Testing all features on multiple devices to ensure consistent performance.</li>
+            </ul>
+        
+        </section>
+        
+        
+    </section>
+
+    <section id="create">
+        <h1>4. Create</h1>
+        <p>This section outlines my development process of the project, with weekly progress, and key challenges encountered.</p>
+        
+        <h2>12-Week Process Log</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Week</th>
+            <th>What I Did</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Week 1</td>
+            <td>Picked my dataset (Christmas Movies), looked through the data to see what I could use, and started cleaning it using Python (removing blank rows and fixing errors).</td>
+        </tr>
+        <tr>
+            <td>Week 2</td>
+            <td>Created my Firebase project and real-time database to store survey results later on. Tested connecting to Firebase.</td>
+        </tr>
+        <tr>
+            <td>Week 3</td>
+            <td>Planned my website layout - decided on sections like charts, survey, and filtered lists. Made a basic HTML file and some placeholder sections.</td>
+        </tr>
+        <tr>
+            <td>Week 4</td>
+            <td>Started creating my graphs using Python (like bar chart for ratings and pie chart for genres) and saved them as images.</td>
+        </tr>
+        <tr>
+            <td>Week 5</td>
+            <td>Created style.css to design my website - added Christmas colours, styled buttons, and section layouts.</td>
+        </tr>
+        <tr>
+            <td>Week 6</td>
+            <td>Added a survey form to the website asking people about their favourite Christmas movies and snacks.</td>
+        </tr>
+        <tr>
+            <td>Week 7</td>
+            <td>Connected the survey to my Firebase database, so every response was saved in real-time. Tested with a few fake responses.</td>
+        </tr>
+        <tr>
+            <td>Week 8</td>
+            <td>Realised I left out some important things, like movie filtering and some labels on charts. Went back to add these and make sure users could filter movies by rating.</td>
+        </tr>
+        <tr>
+            <td>Week 9</td>
+            <td>Added interactive charts using Chart.js to replace some images. These charts update when users filter movies.</td>
+        </tr>
+        <tr>
+            <td>Week 10</td>
+            <td>Wrote most of my report (Meeting the Brief, Investigation, Plan & Design). Made small changes to the website to match what I wrote in the report.</td>
+        </tr>
+        <tr>
+            <td>Week 11</td>
+            <td>Did a full test of the whole site - checked all buttons, made sure survey saves to Firebase, checked all sections show up correctly.</td>
+        </tr>
+        <tr>
+            <td>Week 12</td>
+            <td>Packed everything into the correct folder structure (Report and Artefact folders), made sure <code>index.html</code> opens the full report, and double-checked all files work for submission.</td>
+        </tr>
+    </tbody>
+</table>
+
+        
+        <h2>My Challenge Encountered</h2>
+        <p><strong>Issue:</strong>When loading the dataset into firebase and trying to generate some basic charts and calculations I identified that some rows had symbols that were invalid for firebase. These incorrect symbols were causing errors in my code and failed to have my cleaned data sent to firebase.</p>
+        <img src="before.PNG" alt="before" style="max-width:100%; height:auto;">
+
+        <p><strong>Resolution:</strong>...</p>
+        <img src="after.PNG" alt="after" style="max-width:100%; height:auto;">
+       
+
+        <h2>Testing Log</h2>
+        <p>During development, several key functionalities were tested. Below is an example of my test case log.</p>
+        
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Test Case</th>
+                    <th>Expected Outcome</th>
+                    <th>Actual Outcome</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dataset Loading</td>
+                    <td>Dataset should load correctly into Python and display basic stats.</td>
+                    <td>Dataset loaded successfully and displayed correct movie counts and ratings.</td>
+                    <td>Pass </td>
+                </tr>
+                <tr>
+                    <td>Chart Display</td>
+                    <td>Charts should show correct data for ratings and genres.</td>
+                    <td>Bar chart, pie chart, and top 10 charts displayed correctly with accurate data.</td>
+                    <td>Pass </td>
+                </tr>
+                <tr>
+                    <td>Survey Data Saved to Firebase</td>
+                    <td>Survey responses should save correctly to the Firebase database.</td>
+                    <td>Responses successfully saved and retrieved from Firebase.</td>
+                    <td>Pass </td>
+                </tr>
+                <tr>
+                    <td>Filter by Rating</td>
+                    <td>Movie list and charts should update when a rating filter is applied.</td>
+                    <td>Filtered movies displayed correctly, and charts updated to show only matching movies.</td>
+                    <td>Pass </td>
+                </tr>
+                <tr>
+                    <td>Navigation Between Sections</td>
+                    <td>Clicking on the navbar buttons should show the correct section.</td>
+                    <td>All buttons correctly displayed their matching section.</td>
+                    <td>Pass </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Algorithm Description</h2>
+
+<p>The core algorithm in my project processes the Christmas movies dataset to:</p>
+<ul>
+    <li>Count how many movies were released each year.</li>
+    <li>Group movies by their rating and display them in interactive charts.</li>
+    <li>Allow filtering of movies by rating using the chart and dropdown filter.</li>
+    <li>Retrieve survey responses from Firebase and calculate summary statistics (like the most popular snack and average number of movies watched per year).</li>
+</ul>
+
+<h3>Movie Data Processing Algorithm</h3>
+<p>In Python, I used the dataset to count how many movies were released in each year and grouped the movies into different rating categories. This data was saved into JSON format so the website could use it to display charts.</p>
+
+<p>
+# Example Python logic
+movie_count_by_year = {}
+rating_distribution = {}
+
+for movie in dataset:
+    year = movie['release_year']
+    rating = movie['rating']
+    
+    if year not in movie_count_by_year:
+        movie_count_by_year[year] = 0
+    movie_count_by_year[year] += 1
+    
+    if rating not in rating_distribution:
+        rating_distribution[rating] = 0
+    rating_distribution[rating] += 1
+</p>
+
+<h3>Filtering Algorithm (JavaScript)</h3>
+<p>In my website, when the user selects a rating from the dropdown or clicks on the pie chart, the following algorithm filters the movies and updates the charts.</p>
+
+<p>
+function filterMoviesByRating(selectedRating) {
+    const filteredMovies = allMovies.filter(movie => movie.rating === selectedRating);
+    updateCharts(filteredMovies);
+}
+</p>
+</section>
+
+    <section id="evaluation">
+        <h1>5. Evaluation</h1>
+<p>
+    Overall, I am happy with how my Christmas Movies project turned out. The project successfully meets the requirements set out in the brief by combining data analysis, visualisation, and interactivity. The website allows users to explore movie data through charts, filter movies by rating, and even submit their own preferences through a survey.
+</p>
+<p>
+    One of the strongest aspects of the project is the use of <strong>interactive charts</strong>, which update automatically when the user applies filters. This makes it easier for users to engage with the data and spot trends, such as the most highly rated movies or which ratings are most common.
+</p>
+
+<p>
+    The project also meets the <strong>basic requirements</strong> by:
+    <ul>
+        <li>Extracting, cleaning, and processing data using Python.</li>
+        <li>Creating visualisations to display key aspects of the data.</li>
+        <li>Developing a web interface where the public can view and interact with the data.</li>
+    </ul>
+    Some of the <strong>advanced requirements</strong> were also achieved, including:
+    <ul>
+        <li>Adding interactive features to charts (filtering and hover effects).</li>
+        <li>Creating a survey form that collects and stores user feedback in Firebase.</li>
+        <li>Using the survey data to generate user-based insights.</li>
+    </ul>
+</p>
+
+<h2>Areas for Improvement</h2>
+<p>
+    Although the project works well, there are several areas I could improve if I had more time:
+</p>
+<ul>
+    <li>Add <strong>more advanced filtering options</strong>, such as filtering by for example decade.</li>
+    <li>Improve the <strong>visual design</strong> to make the site look more polished and professional.</li>
+    <li>Expand the analysis by adding <strong>trend lines or additional comparisons</strong>, such as comparing Christmas movies to non-Christmas movies.</li>
+    <li>Include a section that highlights <strong>top user-recommended movies</strong> based on the survey data.</li>
+</ul>
+
+<p>
+    Overall, the project successfully meets the key requirements of the brief while providing an engaging and interactive way for users to explore and contribute to the Christmas movies dataset.
+</p>
+
+    </section>
+
+    <section id="references">
+        <h1>6. References</h1>
+        <p><a href="https://data.gov.ie/dataset/" target="_blank">https://data.gov.ie/dataset/</a></p>
+        <p><a href="https://www.kaggle.com/" target="_blank">https://www.kaggle.com/</a></p>
+        <p><a href="https://www.cso.ie/en/databases/" target="_blank">https://www.cso.ie/en/databases/</a></p>
+
+        <p><a href="https://www.kaggle.com/datasets/jonbown/christmas-movies " target="_blank">https://www.kaggle.com/datasets/jonbown/christmas-movies </a></p>
+        <p><a href="https://www.kaggle.com/datasets/rummagelabs/pixar-movies/data " target="_blank">https://www.kaggle.com/datasets/rummagelabs/pixar-movies/data </a></p>
+
+        <p><a href="https://www.imdb.com/" target="_blank">https://www.imdb.com/</a></p>
+        <p><a href="https://www.rottentomatoes.com/" target="_blank">https://www.rottentomatoes.com/</a></p>
+        <p><a href="https://www.pinterest.com/" target="_blank">https://www.pinterest.com/</a></p>
+
+        <p><a href="https://matplotlib.org/stable/" target="_blank">https://matplotlib.org/stable/</a></p>
+        <p><a href="https://www.python.org/" target="_blank">https://www.python.org/</a></p>
+        <p><a href="https://html.com/" target="_blank">https://html.com/</a></p>
+        <p><a href="https://www.learn-html.org/" target="_blank">https://www.learn-html.org/</a></p>
+        <p><a href="https://www.learnpython.org/" target="_blank">https://www.learnpython.org/</a></p>
+    </section>
+
+    <section id="summary-word-count">
+        <h1>7. Summary Word Count</h1>
+<p>The table below lists the word counts for each section of my report.</p>
+
+<table border="1" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Section</th>
+            <th>Word Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1. Meeting the Brief</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>2. Investigation</td>
+            <td>474</td>
+        </tr>
+        <tr>
+            <td>3. Plan and Design</td>
+            <td>339</td>
+        </tr>
+        <tr>
+            <td>4. Create</td>
+            <td>674</td>
+        </tr>
+        <tr>
+            <td>5. Evaluation</td>
+            <td>285</td>
+        </tr>
+        <tr>
+            <td><strong>Total</strong></td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+
+
+    </section>
+</body>
+</html>
